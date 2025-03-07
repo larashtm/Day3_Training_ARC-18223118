@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Sederhana</title>
+    <link rel="stylesheet" href="style.css"> <!-- Hubungkan ke CSS -->
+</head>
+<body>
+    <h1>Website Sederhana</h1>
+
+    <!-- Tombol untuk mengambil data dari JSONPlaceholder -->
+    <button onclick="ambilData()">Ambil Data</button>
+    
+    <!-- Tombol untuk mengambil data dari Random User API -->
+    <button id="ambil-data">Ambil Data User</button>
+    
+    <p id="hasil">Menunggu data...</p>
+
+    <!-- Script ambilData() langsung di dalam HTML -->
+    <script>
+        function ambilData() {
+            fetch('https://jsonplaceholder.typicode.com/todos/1')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    document.getElementById('hasil').innerText = `Judul: ${data.title}`;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('hasil').innerText = "Gagal mengambil data.";
+                });
+        }
+    </script>
+
+    <!-- Hubungkan dengan script.js -->
+    <script src="script.js"></script>
+</body>
+</html>
